@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            width: 200px;
+        }
+        .container{
+            height: 250px;
+            width: 250px;
+  overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    
+<!-- <h1>MANTENIMIENTO</h1>
+<div class="parrafos">
+    <p id="p1"></p>
+    <p>parrafo2</p>
+    <p>parrafo3</p>
+</div> -->
+<div class="container">
+
+    <img src="img/isa.jpeg">
+</div>
+
+
+    <script>
+
+    var img = document.querySelector('img'),
+    grados = 1,
+    i = 0
+
+    tiempo = 0
+    var rotar = setInterval(function(){
+        var parrafo = document.getElementById('p1')
+        if (tiempo < 30){
+            tiempo ++
+            grados ++
+            img.style.transform="scale("+(1+(grados/50))+") rotate("+grados+"deg) "
+        } else{
+            clearInterval(rotar)
+        }
+    },100)
+
+        
+
+
+    var text = "estoy aprendiendo javascript, y estoy aprendiendo mucho"
+    var array = [1,3,'algo', 'nada', 10]
+
+    var resultadoSearch = text.search("script")
+    console.log(resultadoSearch);
+
+    var resultadoMatch = text.match(/apre/)
+    console.log(resultadoMatch);
+
+    var resultadoMatchGlobal = text.match(/apre/gi) //g de global, i de inCaseSensitive
+    console.log(resultadoMatchGlobal);
+
+    var resultadoSubst = text.substring(1,5)
+    console.log(resultadoSubst)
+
+    var resultadoCharAt = text.charAt(10)
+    console.log(resultadoCharAt);
+
+    var resStartWith = text.startsWith('est')
+        console.log('empieza con est? ' +resStartWith);
+
+        var resEndWith = text.endsWith('cho')
+        console.log('termina en cho? ' +resEndWith);
+    
+    var palabra = 'toy'
+    var resIndexOf = text.indexOf(palabra)
+    console.log('la palabra: "' +palabra +'" se encuentra en la posicion ' +resIndexOf);
+
+    var resInclude = text.includes('java')
+    console.log(resInclude);
+
+    console.log(array.includes('10',3)); //palabra, posicion de inicio
+    
+    console.log(text.repeat(5));
+
+    console.log(text.replace('estoy','Estamos'));
+
+    console.log(text.slice(2,5));
+
+    console.log(text.split(' '));
+
+    console.log(text.toLocaleUpperCase())
+
+   
+    console.log(text.concat('y algo mas... me olvide de decir que...', 'si si, lo dije!!!', 'Repitiendo x 5 \n '.repeat(5)).toUpperCase()) // concatenando varios y pasando a mayusculas
+
+    var plantilla = ` vamos a probar
+    en una nueva linea
+    y en otro mas..`
+
+    var elementos = document.querySelectorAll('.parrafos p')
+    var elemArray = Array.from(elementos)
+        console.log('elemArray: ' ,elemArray);
+
+    var elemArrayOf = Array.of('nave de fuego', 'camiones Diesel 4x4', 'tractores', 'autos')
+    console.log('elemArrayOf: ' ,elemArrayOf);
+    
+    // console.log(elemArrayOf.sort());
+    // console.log(elemArrayOf.reverse());
+
+    const [nave1, camiones1 , ,] = elemArrayOf
+        console.log(nave1, ' - ', camiones1);
+
+    const menu = [
+        {nombre:'Juan',  apellido:'Perez', edad: 10},
+        {nombre:'Ed', apellido: 'Com', edad: 14},
+        {nombre:'Richard', apellido: 'Mele', edad: 16}
+    ]
+    var res = menu.find(nom => nom.nombre.toLowerCase().includes('ju'.toLowerCase()))
+    console.log('respuesta' ,res);
+
+    var filterM = menu.filter(ape => ape.apellido == "Com")
+   console.log('filter. El nombre es:' ,filterM[0].nombre)
+
+   var filterSome = menu.filter(cada => cada.edad >13)
+    console.log(filterSome.map(cada=>'La edad de ' +cada.nombre +' es de ' +cada.edad));
+
+    for(let cada in menu){console.log(menu[cada].nombre);}
+    </script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <button id="clickMe">clickMe</button>
+    <button id="clickMe2">clickMe2</button>
+
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Placeat quisquam nemo non amet commodi vitae doloremque
+        obcdignissimos voluptatum, incidunt, doloremque porro tenetur nulla. Voluptatibus?</p>
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Placeat quisquam nemo non amet commodi vitae doloremque
+        obcaecati quae, aspernatur quis nam molestiae eveniet delectus fugit eos qui enim rerum aperiam, voluptate
+        corrupti! Architecto quo earum vitae. Ratione reprehenderit perspiciatis magni eius totam dignissimos
+        voluptatum, incidunt, doloremque porro tenetur nulla. Voluptatibus?</p>
+    <p>Lorem iati quae, aspernatur quis nam molestiae eveniet delectus fugit eos qui enim rerum aperiam, voluptate
+        corrupti! Architecto quo earum vitae. Ratione reprehenderit perspiciatis magni eius totam dignissimos
+        voluptatum, incidunt, doloremque porro tenetur nulla. Voluptatibus?</p>
+    <div id="contenedorImg"></div>
+
+
+    <script>
+
+
+        var boton = document.querySelector('#clickMe')
+        boton.addEventListener('click', function () {
+            let parrafos = Array.from(document.getElementsByTagName('p'))
+            console.log(parrafos);
+            for (p of parrafos) {
+                console.log(p.innerHTML);
+            }
+            this.style.backgroundColor = "red"
+
+            var imagen = document.createElement('img')
+            imagen.src = 'img/isa.jpeg'
+            imagen.width = 200
+            document.body.appendChild(imagen)
+        })
+
+        var boton2 = document.querySelector('#clickMe2')
+        boton2.addEventListener('click', function () {
+            console.log('ancho: ', window.innerWidth, '\p alto: ', window.innerHeight);
+            localStorage.setItem('nombre','Edgardo')
+            
+            var p = document.getElementsByTagName('p')
+            p[0].innerHTML =  '<h3>Nombre: ' + localStorage.getItem('nombre') + '</h3>'
+
+            window.history.forward()
+
+
+
+
+        })
+
+
+
+    </script>
+</body>
+
+</html>

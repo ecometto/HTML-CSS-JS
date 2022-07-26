@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+<button id="boton">encender</button>
+
+    <script>
+
+class Producto{
+    constructor(serie, tGarantia = 100){
+        this.serie = serie
+        this.tGarantia = tGarantia
+    }
+
+    set garantia(val){
+        this.tGarantia -= val
+    }
+    get garantia(){
+        return this.tGarantia
+    }
+}
+
+var boton = document.getElementById('boton')
+
+
+class Pantalla extends Producto{
+    constructor(serie,marca, pulgadas){
+        super(serie)
+        this.marca = marca
+        this.pulgadas = pulgadas
+        this.encendido = false
+    }
+
+    estadoEncendido(){
+        this.encendido = !this.encendido
+    }
+
+    OnOff(){
+        if(!this.encendido){
+        this.estadoEncendido()
+        this.garantia = 1
+        boton.innerText= "apagar"
+        return `La pantalla ${this.marca} se ha encendido. Te quedan ${this.garantia} - ${this.encendido}`  
+        }else{
+            let res = confirm("desea apagar?")
+            if(res){
+            this.estadoEncendido()
+            boton.innerText= "encender"
+            return `La pantalla ${this.marca} se ha apagado. `
+            } 
+        }
+    }
+
+    getData(){
+       return `la pantalla ${this.marca} SN:${this.serie} tiene ${this.pulgadas} pulgadas`
+    }
+}
+
+var pant1 = new Pantalla('11123','sony 2020',25)
+
+document.getElementById('boton').addEventListener('click', ()=>{
+    console.log(pant1.OnOff())
+})
+
+
+// class Producto{
+//     constructor(serie, garantia = 100){
+//         this.serie = serie
+//         this.garantia = garantia
+//         }
+// }
+
+// var p1 = new Producto('1231',3000)
+// var p2= new Producto('54545')
+
+// console.log(p2.garantia);
+// console.log(p1.garantia);
+
+// class Pantalla extends Producto{
+//     constructor(serie, marca, modelo, pulgadas){
+//         super(serie)
+//         this.marca = marca
+//         this.modelo = modelo
+//         this.pulgadas = pulgadas
+//     }
+//     encendido(){
+//         return `la pantalla ${this.marca} ${this.modelo} se ha encendido.`
+//     }
+//     volumen(){
+
+//     }
+//     info(){
+//         return 'Esta pantalla es marca ' + this.marca + ' Modelo ' + this.modelo + 'y tiene ' + this.pulgadas + ' pulgadas. serial Number: ' +this.serie 
+//     }
+
+// }
+
+// var pantalla1 = new Pantalla('55555','Sony','mb5287','21 pulgadas')
+// var pantalla2 = new Pantalla('22222','Sony2','mb528722','22 pulgadas')
+
+// document.getElementById('boton').addEventListener('click', function(){
+//     console.log(pantalla2.info());
+// })
+
+
+     
+    </script>
+</body>
+</html>

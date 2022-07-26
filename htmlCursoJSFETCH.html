@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <h3>FETCHING INFO</h3>
+   <div id="errorBanderas" style="color:red; font-size:30px">error</div>
+
+   <h4>BANDERAS</h4>
+
+    <div id="banderas" style="display:flex; flex-wrap: wrap">
+   </div>
+
+   <h4>LISTA DE POST</h4>
+   <div id="errorPost" style="color:red; font-size:30px">error</div>
+   <UL id="lista">
+
+   </UL>
+
+
+
+
+    <script>
+
+        var urlCountries = "https://restcountries99.com/v3.1/all"
+        var urlPost = "https://jsonplaceholder99.typicode.com/posts"
+
+        var banderas = document.getElementById('banderas')
+        var lista = document.getElementById('lista')
+        var divBandera = document.getElementById('errorBanderas')
+        var divPost = document.getElementById('errorPost')
+
+        divBandera.style.display="none"
+        divPost.style.display="none" 
+        document.addEventListener('load', getPostData() )
+        document.addEventListener('load', getCountriesData() )
+
+        function getCountriesData(){
+            fetch(urlCountries)
+            .then(res=> res.json())
+            .then(data => {
+                showFlags(data) 
+                // console.log(data);
+            })
+            .catch(error=>{
+                console.log(error);
+                divBandera.style.display = "block"
+                divBandera.innerHTML = "Error al conectarse con los datos"
+                setTimeout(()=>divBandera.style.display="none"
+                ,3000)
+            })
+
+        }
+
+        function getPostData(){
+            fetch(urlPost)
+            .then(res => res.json())
+            .then(data=> {
+                showPosts(data)
+                // console.log(data);
+
+            })
+            .catch(error=>{
+                console.log(error);
+                divPost.style.display = "block"
+                divPost.innerHTML = "Error al conectarse con los datos"
+                setTimeout(()=> divPost.style.display="none" 
+                ,3000)
+            })
+        }
+
+
+        
+        function showFlags(data){
+            banderas.innerHTML = ""
+            data.forEach(element => {
+                banderas.innerHTML += `
+                <div style="margin: 10px; border: solid 1px gray; padding: 5px; width: 120px">
+                    <p>${element.name.common}</p> <br>
+                    <img src="${element.flags.png}" width="50px">
+                    <hr>
+                    </div>
+                    `
+                });
+            }
+            
+            function showPosts(data){
+                lista.innerHTML = ""
+                data.forEach(element => {
+                    lista.innerHTML += `
+                        <div>
+                            <b>Titulo: '${element.title}'</b>
+                            <p>Descripcion: <br> ${element.body}</p>
+                            <hr>
+                        </div>
+                    `
+                });
+            }
+            </script>
+</body>
+</html>
