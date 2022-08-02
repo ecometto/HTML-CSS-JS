@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    variables, Estructuras y Objetos
+
+    <script src=""></script>
+    <script>
+        // ES ACONSEJABLE DEFINIR LAS VARIABLES EN UN MISMO LUGAR (PREFERENTEMENTE AL INICIO). 
+        // SE PUEDEN CREAR SEPARADAS POR COMA o CADA UNA CON LA PALABRA RESERVADA "VAR"
+        var nombre = "edgardo", apellido = "cometto", edad = 33
+
+
+
+        // EVITAR CALCULOS INNECESARIOS (EJEMPLO: EN UN CICLO, EVITAR QUE TENGA QUE CONSULTARSE EL VALOR DE UNA VARIABLE EN CADA ITERACIÓN) . CONVIENE DEFINIR UNA VARIABLE
+        var animales = ['PERRO', 'GATO', 'RATON', 'BURRO', 'PAJARO']
+
+        var qAnimales = animales.length
+
+        for (let i = 0; i < qAnimales; i++) {
+            console.log(animales[i]);
+        }
+        // CODIGO INCORRECTO
+        // for (i = 0; i<=animales.length; i++) {
+        //     console.log(animales[i]);
+        // }
+
+
+
+        // ES ACONSEJABLE GUARDAR VARIABLES Y/O FUNCIONAES ANÓNIMAS EN OBJETOS, PRINCIPALMENTE CUANDO HAY MUCHO CODIGO, PARA EVITAR SOBREESCRITURA
+        var datos = {
+            nombre: "edgardo",
+            apellido: "cometto",
+            vacio: "",
+            saludar: function () { return "hola " + this.nombre.toUpperCase() + " " + this.apellido.toUpperCase() },
+            vivo: true
+        }
+        console.log(datos.saludar());
+
+
+
+        // VALIDACIONES NO EXPLICITAS. EN CASO DE BOOLEANOS O ARRAYS U OBJETOS NO HACE FALTA PONER "===".
+        if (animales) { console.log("animales existe..."); }
+        if (datos.vacio) { console.log("los datos en variable 'vacio' existen."); } else { console.log("los datos en variable 'vacio' no existen") }
+        if (datos.vivo) { console.log("La persona está viva..."); }
+
+
+
+        // OPERADORES TERNARIOS
+        var estado = false
+        var comprobacionEstado = estado ? "estado positivo" : "estado negativo"
+        console.log(comprobacionEstado);
+
+        var myObj = { nombre: "Richard", nombre1: "Jose" }
+        for (cada in myObj) {
+            console.log(myObj[cada]);
+        }
+
+
+        // DOCBLOCKR PARA COMENTAR FUNCIONES O VARIABLES. SE EJECUTA PULDANDO '/**' EN LA LINEA DE ARRIBA DE LA FUNCION O VARIABLE
+
+        /**
+         * Representa la funcion saludo
+         * @param {string} nombre - Name of the person.
+         * @param {number} edad - Age of the person.
+        * @returns {string} 
+         */
+        function saludo(nombre, edad) {
+            let saludoCompleto = "Hola " + nombre + " tienes " + edad + "años"
+            return saludoCompleto
+        }
+
+
+        // MANTENER ESTRUCTURA DIVIDIDA POR TIPO DE ARCHIVO (HTML, CSS, JS) EN CADA CARPETA  --- index.html + carpeta css + carpeta js + carpeta img + carpeta libs 
+    
+
+    // MEDIR EL TIEMPO QUE DEMORAN LAS FUNCIONES CON CONSOLE.TIME(NOMBRE) 
+    console.time('total')
+    qanimals = animales.length
+    // console.time('bucleFor')
+    for (let i = 0; i < qanimals; i++){
+        console.log(animales[i])
+    }
+    // console.timeEnd('bucleFor')
+    // console.time('bucleForIn')
+    for (cada in animales){
+        console.log(animales[cada])
+    }
+    // console.timeEnd('bucleForIn')
+    console.timeEnd('total')
+
+
+
+
+    </script>
+</body>
+
+</html>

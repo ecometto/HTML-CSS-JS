@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <title>Tab + Acordeon + Slider</title>
+</head>
+
+<body>
+
+    <div class="mainContanier">
+        <div class="buttonContainer">
+            <button class="button active">TAB</button>
+            <button class="button ">ACORDEON</button>
+            <button class="button ">SLIDER</button>
+        </div>
+        <div class="elementContainer">
+
+            <div class="element tab active">
+                <h2>ELEMENTO TAB</h2>
+                <h4>ESTA ES LA PRIMER "SOLAPA" DEL TAB. EN LAS SIGUIENTES ENCONTRARÁS EL ACORDEON Y CARRUCEL/SLIDER</h4>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos incidunt, delectus saepe hic
+                    fugiat accusantium corrupti beatae natus, autem nisi quibusdam eligendi? Mollitia necessitatibus
+                    repellat veritatis ipsa, facilis suscipit pariatur molestias vero, ducimus cumque reiciendis.
+                    Aliquam quae sapiente deserunt provident animi nihil magni, am beatae pariatur distinctio ipsa.</p>
+
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam nobis doloribus unde fugiat magni
+                    saepe corrupti quam labore non dolore voluptates, est totam dicta quidem atque, dignissimos facere
+                    odio a. Reiciendis earum accusantium enim? Quisquam culpa tempora consequuntur officiis ad natus
+                    nobis minus eos sint magni repellat, corrupti odit dolorum possimus ut sit aliquid, illo provident
+                    laborum dolores rerum corporis quod! Eos adipisci iste ipsam doloremque quibusdam quisquam
+                    necessitatibus, aliquid laudantium, similique alias labore nam corrupti fugit enim veritatis
+                    laboriosam, deserunt qui iusto. Sequi eligendi tenetur aliquid quaerat nobis magnam soluta nesciunt
+                    aspernatur numquam quam. Nisi sapiente id eius hic!</p>
+            </div>
+
+            <div class="element acordeon">
+                <h2>ELEMENTO ACORDEON</h2>
+                <div class="acordeonContainer">
+                    <h4 class="acordeonTitle">titulo1</h4>
+                    <p class="acordeonParrafo active">Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum,
+                        sunt. Consequuntur sapiente animi eligendi nemo quo sequi dolorem molestiae, facilis labore
+                        magni, alias nihil reiciendis aspernatur fuga. Sed enim quis facere aperiam? Tempore corrupti,
+                        ut aliquid, similique necessitatibus ipsam dignissimos dicta saepe magni quos porro quasi ipsum
+                        alias culpa non?</p>
+                </div>
+                <hr>
+                <div class="acordeonContainer ">
+                    <h4 class="acordeonTitle">titulo2</h4>
+                    <p class="acordeonParrafo">Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, sunt.
+                        Consequuntur sapiente animi eligendi nemo quo sequi dolorem molestiae, facilis labore magni,
+                        alias nihil reiciendis aspernatur fuga. Sed enim quis facere aperiam? Tempore corrupti, ut
+                        aliquid, similique necessitatibus ipsam dignissimos dicta saepe magni quos porro quasi ipsum
+                        alias culpa non?</p>
+                </div>
+                <hr>
+                <div class="acordeonContainer ">
+                    <h4 class="acordeonTitle">titulo3</h4>
+                    <p class="acordeonParrafo">Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, sunt.
+                        Consequuntur sapiente animi eligendi nemo quo sequi dolorem molestiae, facilis labore magni,
+                        alias nihil reiciendis aspernatur fuga. Sed enim quis facere aperiam? Tempore corrupti, ut
+                        aliquid, similique necessitatibus ipsam dignissimos dicta saepe magni quos porro quasi ipsum
+                        alias culpa non?</p>
+                </div>
+                <hr>
+                <div class="acordeonContainer ">
+                    <h4 class="acordeonTitle">titulo4</h4>
+                    <p class="acordeonParrafo">Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, sunt.
+                        Consequuntur sapiente animi eligendi nemo quo sequi dolorem molestiae, facilis labore magni,
+                        alias nihil reiciendis aspernatur fuga. Sed enim quis facere aperiam? Tempore corrupti, ut
+                        aliquid, similique necessitatibus ipsam dignissimos dicta saepe magni quos porro quasi ipsum
+                        alias culpa non?</p>
+                </div>
+                <hr>
+
+            </div>
+
+            <div class="element slider">
+                <h2>ELEMENTO SLIDER</h2>
+                <div class="imgSliderContainer">
+                    <div class="text">
+                        <img src="img/1.jpg" alt="">
+                    </div>
+                    <div class="text">
+                        <img src="img/2.jpg" alt="">
+                    </div>
+                    <div class="text">
+                        <img src="img/3.jpg" alt="">
+                    </div>
+                    <div class="text">
+                        <img src="img/4.jpg" alt="">
+                    </div>
+                    <div class="text">
+                        <img src="img/5.jpg" alt="">
+                    </div>
+                    <div class="text">
+                        <img src="img/6.jpg" alt="">
+                    </div>
+                </div>
+
+                <div class="buttonSliderContainer">
+                    <div class="sliderButton active"></div>
+                    <div class="sliderButton"></div>
+                    <div class="sliderButton"></div>
+                    <div class="sliderButton"></div>
+                    <div class="sliderButton"></div>
+                    <div class="sliderButton"></div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- JQUERY  -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+    <script src="app.js"></script>
+
+</body>
+
+</html>

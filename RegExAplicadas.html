@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div>
+        <form id = 'form'>
+            <input  id="mail" type="tex"> <br>
+            <input  id="pass" type="password"> <br>
+            <button id="button" >submit</button>
+        </form>
+    </div>
+
+
+
+    <script>
+        const form = document.getElementById('form')
+        const mail = document.getElementById('mail')
+        const pass = document.getElementById('pass')
+
+        form.addEventListener('submit', (e)=>{
+            e.preventDefault();
+            validar()
+        })
+
+        function validar(){
+            let regExMail = /\w+([\.\+\-]?\w)@(\w{1,})(\.\w{2,4})+$/
+            regExMail.test(mail.value)?'':alert('El formato del mail no coincide')
+            let regExPass = /^[a-zA-Z0-9\.]+$/
+            regExPass.test(pass.value)?'':alert('Debe contener solo letras (mayusculas o Minusculas) y numeros')
+        }
+
+    </script>
+</body>
+</html>

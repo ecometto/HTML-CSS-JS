@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expresiones Regulares</title>
+</head>
+<body>
+    <h1>REGULAR EXPRESIONS</h1>
+
+    <script>
+        
+        /*
+        Caracteres	Significado
+        \d	
+        Busca cualquier dígito (número arábigo). Equivalente a [0-9]. Por ejemplo, /\d/ o /[0-9]/ coincide con "2" en "B2 es el número de suite".
+        
+        \D	
+        Busca cualquier caracter que no sea un dígito (número arábigo). Equivalente a [^0-9]. Por ejemplo, /\D/ o /[^0-9]/ coincide con "B" en "B2 es el número de suite".
+        
+        \w	
+        Busca cualquier caracter alfanumérico del alfabeto latino básico, incluido el caracter de subrayado. Equivalente a [A-Za-z0-9_]. Por ejemplo, /\w/ coincide con "m" en "manzana", "5" en "$5.28", "3" en "3D" y "m" en "Émanuel".
+        
+        \W	
+        Busca cualquier caracter que no sea un caracter de palabra del alfabeto latino básico. Equivalente a [^A-Za-z0-9_]. Por ejemplo, /\W/ o /[^A-Za-z0-9_]/ coincide con "%" en "50%" y "É" en "Émanuel".
+        
+        \s	
+        Busca un solo caracter de espacio en blanco, incluido el espacio, tabulación, avance de página, avance de línea y otros espacios Unicode. Equivalente a [ \f\n\r\t\v\u00a0\u1680\u2000-\u200a\u2028\u2029\u202f\u205f\u3000\ufeff]. Por ejemplo, /\s\w/ encuentra " bar" en "foo bar".
+
+        \S	
+        Busca un solo caracter que no sea un espacio en blanco. Equivalente a [^ \f\n\r\t\v\u00a0\u1680\u2000-\u200a\u2028\u2029\u202f\u205f\u3000\ufeff]. Por ejemplo, /\S\w/ encuentra "foo" en "foo bar".
+
+        \t	Coincide con una tabulación horizontal.
+
+        \r	Coincide con un retorno de carro.
+
+        \n	Coincide con un salto de línea.
+
+        \v	Coincide con una tabulación vertical.
+
+        \f	Coincide con un caracter de avance de página.
+
+        [\b]	Coincide con un caracter de retroceso. Si estás buscando el carácter de límite de palabra (\b), consulta Límites (en-US).
+
+        \0	Coincide con un caracter NUL. No sigue a este con otro dígito.
+
+        \cX	
+        Coincide con un caracter de control mediante notación de intercalación, donde "X" es una letra de la A a la Z (correspondiente a los puntos de código U+0001-U+001F). Por ejemplo, /\cM/ encuentra "\r" en "\r\n".
+
+        \	
+        Indica que el siguiente caracter se debe tratar de manera especial o "escaparse". Se comporta de dos formas. 
+        
+        */
+
+
+// DOS FORMAS VALIDAS PARA ESCRIBIR EXPRESIONES REGULARES 
+var expresion1 = new RegExp('abc')
+var expresion2 = /abc/
+
+
+let text = "este es algun texto que estoy probando. y abc son muy comunes"
+console.log(expresion2.test ('alguntexto abC Abc abc tiene que haber'))
+// EQUIVALENTES 
+        var regEx1 = /[0123456789]/
+        var regEx2 = /[0-9]/
+        var regEx3 = /\d/
+        console.log(regEx3.test(text));
+//  --------------
+
+        var regEx3 = /[a-z]/ //todas las letras entre la A y la Z (distingue Mayuscula de Minuscula)
+       console.log(regEx2.test(text));
+
+var fecha = '22-06-2020' // GRUPOS DE CARACTERES .USANDO LOS CARACTERES ESPECIALES PODEMOS VALIDAR PATRONES DE CADENAS.. POR EJEMPLO 
+var RE1= /\d\d-\d\d-\d\d\d\d/
+console.log(RE1.test(fecha))
+
+
+var re2 = /[^a-zA-Z]/ // VALORES NEGADOS ^ (ALT+94). Ej: que sean distintos a letras. Ojo que el espacio en blanco es distinto de una letra, y daría true
+console.log(re2.test('textoUno'));
+
+var re3 = /^\d/ //¿EMPIEZA CON CUALQUIER VALOR DISTINTO DE NUMERO?
+console.log(re3.test('estoEsUnTextoSolamenteSinEspacios'));
+
+var re4 = /[^\d]/ //¿POSEE ALGUN VALOR DISTINTO DE NUMERO?
+console.log(re4.test('123456 '));
+
+var re5 = /mund?o/ //el simbolo '?' es par aindicar que un caracter puede estar o no.
+console.log(re5.test('muno'));
+
+var re6 = /\d{1,2}-\d{1,2}-\d{1,}/ // ojo.. al poner fecha tiene que estar como string
+console.log(re6.test('11-02-2003'));
+
+var re7 = /a-z/i // se agrega 'i'fuera de la expresión para indicar que no es 'Case Sensitive'. OJO con los espacios en blanco (no son caracteres alfanumericos)
+console.log(re7.test('Texto'));
+
+re8 = /\bho\b/  // englobar una determinada cadena exacta entre \b \b para que se acoincidencia exacta
+console.log(re8.test('hola ho o'));
+
+var re9 = /pollo|pescado|carne/ // con el simbolo 'pipe (alt 124)' puedo sugerir que sea alguna de esas expresiones
+console.log(re9.test('hola ho pescado'));
+
+var re10 = /^hola|cazo$/ // se usa '^' (alt 94) para indicar que comienza con esa palabra y $ para indicar que termina con esa palabra
+console.log(re10.test('hola locazo'));
+
+
+var myText = 'texto con 3 palabras y 1 numero'
+var patronNumero = /\d+/g // define cualquier numero con uno o mas digitos. busca de manera global
+var patronBlanco = /\s+/g //define los espacios en blanco
+
+var qNum = 0
+var qPal = 0
+var qBlanco = 0
+var numeros = ''
+while(matchNum = patronNumero.exec(myText)){
+    qNum++
+    numeros += matchNum[0]+ ' - '
+    console.log(matchNum);
+    console.log('Se encontro el numero', matchNum[0], ' en la posición', matchNum.index);
+};
+
+console.log('numeros...... ', numeros);
+
+while (matchBlanco = patronBlanco.exec(myText)){
+    qBlanco ++
+}
+
+console.log('cantidad de numero: ', qNum ,'\nLa cantidad de palabras es ', ((qBlanco+1)-qNum));
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+/* configuración general  */
+.mainContanier {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    position: relative;
+    width: 100%;
+    margin: auto;
+}
+
+.buttonContainer {
+    background-color: silver;
+    display: flex;
+    flex-flow: row nowrap;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttonContainer button {
+    margin: 5px;
+    width: 110px;
+    border-radius: 5px;
+    padding: 4px;
+    background-color: gray;
+    color: whitesmoke;
+    font-weight: 600;
+}
+
+.buttonContainer button.active {
+    background-color: tomato;
+    transition: all 1s;
+}
+
+.element {
+    position: absolute;
+    display: none;
+}
+
+.element.active {
+    display: block;
+    transition: all 1s;
+}
+
+/* configuración del tab  */
+.tab p{
+    padding: 20px;
+    text-align: justify;
+    
+}
+
+.tab h2, .tab h4{
+    text-align: center;
+    padding: 10px;
+}
+
+/* configuracion del acordeon  */
+.acordeon h2{
+    text-align: center;
+    padding: 10px;
+}
+
+.acordeonContainer{
+    margin-bottom: 20px;
+}
+
+.acordeonTitle{
+background-color: steelblue;
+padding: 5px;
+text-align: center;
+cursor: pointer;
+z-index: 100;
+}
+
+.acordeonParrafo{
+padding: 20px;
+text-align: justify;
+height: 0;
+opacity: 0;
+overflow: hidden;
+transition: all 0.5s;
+
+}
+.acordeonContainer .acordeonParrafo.active{
+    padding: 10px;
+    text-align: justify;
+    height: auto;
+    opacity: 1;
+    }
+
+
+
+
+
+/* configuracion slider / carrucel */
+.slider{
+    text-align: center;
+}
+
+.imgSliderContainer{
+    width: 600%;
+    height: 400px;
+    background: linear-gradient(0deg, rgba(70,130,180,0.7), silver);
+    display: flex;
+    align-items: center;
+    flex-flow: row nowrap;
+    transition: all 1s;
+}
+
+.text{
+    width: 100%;
+    height: 340px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.text img{
+    max-height: 320px;
+    max-width: 600px;
+    width: 100%;
+}
+
+.buttonSliderContainer{
+    display: flex;
+    justify-content: center;
+}
+
+.sliderButton{
+    margin: -24px 5px 0px 0px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: silver;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.sliderButton.active{
+    background-color:orange;
+}
