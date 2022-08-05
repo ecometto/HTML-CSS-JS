@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- materialize -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <link rel="stylesheet" href="styles.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <header id="header" class="header">
+            <div class="encabezado encabezado-active ">
+                <h2>hello</h2>
+                <p>I'm using SASS with "Live Sass Compiler"</p>
+                <p>
+                    SASS tools used: Extend
+                    Nesting, Variables, Mixins, Import Modules 
+                </p>
+
+
+ 
+            </div>
+        </header>
+
+        <main>
+            <h4> I'll make a beautiful carousel with materialize.. Enjoy it</h4>
+            <div class="carousel">
+                <div class="carousel-item">
+                    <div>
+                        <h2>SKILLS</h2>
+                        <hr>
+                        <P>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit incidunt sint atque vel soluta
+                            maxime minima nisi praesentium quis labore?</P>
+                        <img src="img/veng.png" alt="">
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div>
+                        <h2>SKILLS 2</h2>
+                        <hr>
+                        <P>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit incidunt sint atque vel soluta
+                            maxime minima nisi praesentium quis labore?</P>
+                        <img src="img/veng.png" alt="">
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div>
+                        <h2>SKILLS 3</h2>
+                        <hr>
+                        <P>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit incidunt sint atque vel soluta
+                            maxime minima nisi praesentium quis labore?</P>
+                        <img src="img/veng.png" alt="">
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div>
+                        <h2>SKILLS 4</h2>
+                        <hr>
+                        <P>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit incidunt sint atque vel soluta
+                            maxime minima nisi praesentium quis labore?</P>
+                        <img src="img/veng.png" alt="">
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div>
+                        <h2>SKILLS 5</h2>
+                        <hr>
+                        <P>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit incidunt sint atque vel soluta
+                            maxime minima nisi praesentium quis labore?</P>
+                        <img src="img/veng.png" alt="">
+                    </div>
+                </div>
+
+            </div>
+        </main>
+
+    </div>
+
+
+    <!-- js materialize  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <script>
+        // const header = document.getElementById('header')
+        // header.addEventListener('click', () => {
+        //     alert('cambiando tamaño')
+        // })
+
+
+        // configurando el carrucel 
+        document.addEventListener('DOMContentLoaded', function () {
+            var elems = document.querySelectorAll('.carousel');
+            var instances = M.Carousel.init(elems, {
+                duration: 300, //	Transition duration in milliseconds.
+                dist: -100,	//Perspective zoom. If 0, all items are the same size.
+                shift: 60,	// Set the spacing of the center item.
+                padding: 0, //	Set the padding between non center items.
+                numVisible: 5, //Set the number of visible items.
+                fullWidth: false, //Make the carousel a full width slider like the second example.
+                indicators: true, //	Set to true to show indicators.
+                noWrap: false, //	Don't wrap around and cycle through items.
+                onCycleTo: null, //Callback for when a new slide is cycled to.
+            });
+
+        });
+
+    </script>
+</body>
+
+</html>

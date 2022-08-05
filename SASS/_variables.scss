@@ -1,0 +1,15 @@
+$color-fondo : rgb(211, 200,200);
+$color-primario: rgb(0,0,200);
+
+
+@mixin flex-center($justify:center){
+    display: flex;
+    justify-content: $justify;
+    align-items: center;
+    text-align: center;
+}
+
+
+
+
+
