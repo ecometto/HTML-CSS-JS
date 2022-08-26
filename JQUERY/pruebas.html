@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        :root {
+            --colorCorazon: blueviolet
+        }
+
+        p {
+            box-shadow: 10px 10px 30px blue, -10px -10px 30px red;
+            text-transform: uppercase;
+            /* transform: rotateX(10deg); */
+            line-height: 40px;
+        }
+
+        a:hover {
+            background-color: aqua;
+        }
+
+        #cuadrado {
+            position: absolute;
+            top: 300px;
+            left: 100px;
+            height: 50px;
+            width: 50px;
+            background-color: var(--colorCorazon);
+            transform: rotate(45deg);
+            box-shadow: 20px 0px 10px green;
+        }
+
+        #cuadrado::before {
+            content: "";
+            position: absolute;
+            top: 0px;
+            left: -25px;
+            height: 50px;
+            width: 50px;
+            background-color: var(--colorCorazon);
+            border-radius: 50%;
+        }
+        #cuadrado::before {
+            content: "";
+            position: absolute;
+            top: 0px;
+            left: -25px;
+            height: 50px;
+            width: 50px;
+            background-color: var(--colorCorazon);
+            border-radius: 50%;
+        }
+
+        #cuadrado::after {
+            content: "";
+            position: absolute;
+            top: -25px;
+            left: 0px;
+            height: 50px;
+            width: 50px;
+            background-color: var(--colorCorazon);
+            border-radius: 50%;
+            box-shadow: 20px 0px 10px green;
+        }
+
+        #l1{
+            position: absolute;
+            top: 312px;
+            left: 105px;
+            height: 5px;
+            width: 30px;
+            background-color:yellow;
+            transform: rotate(40deg);
+        }
+        #l1::before{
+            content: "";
+            position: absolute;
+            top: -5px;
+            left: -23px;
+            height: 5px;
+            width: 30px;
+            background-color:yellow;
+        }
+        #l1::after{
+            content: "";
+            position: absolute;
+            top: 5px;
+            left: 23px;
+            height: 5px;
+            width: 30px;
+            background-color:yellow;
+        }
+        img{
+            position: fixed;
+            right: 10px;;
+            width: 150px;
+            height: 150px;
+        }
+        #l2{
+            position: absolute;
+            top: 450px;
+            left: 100px;
+            height: 100px;
+            width: 100px;
+            background:linear-gradient(90deg, black, yellow);
+            border-radius: 50%;
+            box-shadow: -10px 5px 10px black;
+            animation: rotar 3s linear infinite;
+        }
+
+        #l3{
+            position: absolute;
+            top: 150px;
+            left: 150px;
+            height: 100px;
+            width: 100px;
+            background-color: aqua;
+            box-shadow: -10px 5px 10px black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        #l3:hover{
+            color: white;
+            font-weight: 800;
+            border: solid 2px orange;
+            animation: brillar 0.3s linear ;
+            animation-fill-mode:forwards;
+        }
+        #l4{
+            position: absolute;
+            top: 50px;
+            left: 0px;
+            height: 100px;
+            width: 100px;
+            background-color: orange;
+            box-shadow: -10px 5px 10px black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            animation: estirar 2s  ;
+            animation-fill-mode: forwards;
+        }
+
+        @keyframes estirar{
+            100%{
+                width: 100%;
+            }
+        }
+
+
+
+        @keyframes brillar{
+            100% {
+                transform:scale(2);
+            }
+
+            /* 100%{transform: scale(10)} */
+        }
+
+
+
+        @keyframes rotar{
+            0%{background:linear-gradient(90deg, black, yellow);}
+            50%{background:linear-gradient(90deg, yellow, rgb(58, 50, 50), yellow);
+                box-shadow: 5px 5px 10px black;}
+            100%{background:linear-gradient(90deg, yellow, black);
+                box-shadow: 10px 5px 10px black;}
+        }
+    </style>
+</head>
+
+<body>
+
+    <a href="">click here</a>
+
+    <p>Lorem ipsum dolor sit <em><b>amet consectetur</b> </em>adipisicing elit. In, optio corrupti, cum eveniet ut ab
+        quae impedit voluptatibus <s>odit </s> ad aliquam enim dolorum suscipit dolorem <u>consequuntur</u>, <em>earum
+            iusto blanditiis.</em></p>
+
+    <div id="cuadrado"></div>
+    <div id="l1"></div>
+    <div id="l2"></div>
+    <div id="l3">mouse hover here</div>
+    <div id="l4">L4</div>
+
+<div class="imgContainer">
+    <img src="https://octuweb.com/wp-content/uploads/pseudo-elemento-silo-creativo-650x400.png" alt="" srcset="">
+</div>    
+
+<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Architecto reiciendis corporis est aspernatur deleniti dolorum, accusantium consectetur debitis magnam doloribus fugiat, alias iusto, asperiores dolor eius! Esse exercitationem consectetur magni perferendis perspiciatis corrupti odit minus. Ducimus temporibus voluptate natus odio nisi? Voluptatibus consequuntur culpa vitae atque quisquam corrupti inventore a iusto ducimus nisi quia, accusantium, obcaecati quam, et cum cumque amet quas eum officia saepe totam tempore voluptatum dolores dolorem. Illum eveniet consequatur blanditiis numquam maiores harum cumque corporis modi quos tempore, debitis saepe voluptate voluptates ullam dolores, accusamus in fuga alias nemo. Corrupti sit veniam dolore et magnam alias minima veritatis numquam, recusandae aut consectetur aspernatur placeat earum voluptatum ipsam id maxime porro sunt quaerat voluptas debitis? Officiis, nihil incidunt inventore quas perferendis ea dicta natus accusamus iusto doloribus dolores minus vitae, rerum voluptatum. Dicta nobis eius deserunt nihil delectus eum dolore beatae tempora exercitationem! Aliquid, veniam deserunt molestias numquam pariatur aut. Doloribus laboriosam odit, nulla autem nemo repellat exercitationem veniam laudantium dicta expedita explicabo ducimus ipsam praesentium minima earum natus alias cum, obcaecati libero maiores fuga quibusdam nobis? Laboriosam, repellendus doloribus accusamus reiciendis porro temporibus, ipsum deserunt et assumenda officia dolores esse commodi quos animi asperiores vel beatae odio. Nemo omnis est rem totam esse et, eum reprehenderit fugiat ab dolor facere nisi fuga, suscipit quaerat, officia iure! Quis voluptates odio maiores voluptate consequatur nemo cum reiciendis eligendi atque delectus? Ex optio impedit earum, nobis laudantium dicta similique ullam veniam quibusdam a minima beatae fuga nesciunt aliquam dolor doloremque deserunt, ipsum quidem velit nulla delectus commodi nostrum. Tempore atque nobis praesentium aperiam vero voluptate obcaecati illo amet dolorem, optio, vitae enim, velit recusandae hic eos numquam dolor et earum? Distinctio ducimus doloribus earum corporis, sint minus, illum exercitationem voluptas ea necessitatibus fugiat incidunt blanditiis dolore. Iste, placeat excepturi.</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae molestiae in minus earum ab cumque iusto nam magni sit similique, perspiciatis doloribus tenetur repellat delectus vel, nihil fuga blanditiis asperiores officia distinctio aspernatur quo architecto dicta id. Labore doloremque provident atque ex voluptas minus, sint, sequi sunt eos ratione iusto perferendis odit maxime, corporis ab molestias ad repudiandae odio cupiditate? Modi reiciendis, optio animi consectetur quam, delectus autem explicabo numquam sint cumque voluptas, cum odit ut ipsum nulla. Tempore sint vitae ducimus culpa necessitatibus soluta. Ratione iusto officiis eaque vero enim eligendi suscipit quibusdam nemo fuga alias. Voluptatem, aspernatur. Accusamus.</p>
+    <script>
+
+        var personas = [
+            { "nombre": "Edgardo", "apellido": "cometto", "edad": 30 }
+        ]
+        personas = [...personas, { "nombre": "Alejandro", "apellido": "Dale", "edad": 15 }]
+
+        personas = [...personas, { "nombre": "Ruben", "apellido": "Dario", "edad": 20 }]
+
+        let p2 = personas.filter((persona, index) =>
+            index === personas.length - 1
+        )
+
+        console.log(p2);
+
+    </script>
+</body>
+
+</html>

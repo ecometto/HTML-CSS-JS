@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOCALSTORAGE</title>
+</head>
+<body>
+    <h1>Loading data in LOCALSTORAGE</h1>
+
+    <form action="">
+        Apellido y nombre: <input id="ayn" type="text"> <br>
+        Edad: <input id="edad" type="text"> <br>
+        <button id="guardar">guardar</button>
+    </form>
+
+    <div>
+        Datos: <br>
+        <div id="destino">
+
+        </div>
+    </div>
+
+
+    <script>
+        let boton = document.getElementById('guardar')
+        let ayn = document.getElementById('ayn')
+        let edad = document.getElementById('edad')
+
+        boton.addEventListener('click', (e)=>{
+            e.preventDefault()
+            alert(`${ayn.value} tiene la edad de: ${edad.value}`)
+            let $data = {'ayn':ayn.value, 'edad':edad.value}
+            let $datos = JSON.stringify($data)
+            localStorage.setItem('datos', $datos)
+
+            getData()
+        })
+
+        function getData(){
+            let datosJson = localStorage.getItem('datos')
+            let datos = JSON.parse(datosJson)
+            let destino = document.getElementById('destino')
+            destino.innerHTML = `Ayn: ${datos.ayn}. Edad: ${datos.edad}`
+        }
+    </script>
+
+</body>
+</html>
