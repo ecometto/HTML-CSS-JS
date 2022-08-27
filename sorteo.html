@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .container {
+            width: 80%;
+            height: 100vh;
+            background-color: blueviolet;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin: auto;
+            position: relative;
+            text-align: center;            
+        }
+        .config{
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: aliceblue;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        .config img{
+            width: 100%;
+            border-radius: 50%;
+        }
+        .sub-container  {
+            min-width: 60%;
+            min-height: 70%;
+            background-color: orange;
+            margin: 0px;
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .numbers-container{
+            background-color: aqua;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            font-size: 30px;
+            font-weight: 600;
+            padding: 20px;
+        }
+        .numbers-container p{
+            margin: 0;
+            padding: 0;
+        }
+        .ul {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .ul li{
+            width: 50px;
+            height: 50px;
+            list-style: none;
+            margin-right: 15px;
+            border: 1px solid black;
+            border-radius: 3px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+        .selected-number{
+            background-color: green;
+            color: white;
+            font-size: 40px;
+            font-weight: 800;
+            min-width: 50%;
+            margin: auto;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        #button{
+            padding: 10px;
+            margin: 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>SISTEMA DE SORTEO DE NUMEROS</h1>
+        <p id="config" class="config"><img src="img/config.png" alt=""></p>
+        <div class="sub-container">
+            <div class="numbers-container">
+                <p id="p">Seleccione "configurar" para iniciar el sorteo</p>
+                <ul id="ul" class="ul">
+                </ul>
+            </div>
+            <!-- --------------  -->
+            <div id="selected-number" class="selected-number">
+                "X"
+            </div>
+            <!-- ---------------- -->
+            <div>
+                <button type="submit" id="button">Sortear</button>
+            </div>
+            <!-- ---------------- -->
+            <div id="resultados">
+                RESUTADOS <br>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // definición de variables 
+        var numbers=[0]
+        var maxNum = 0
+        var count = 0
+        let config = document.getElementById('config')
+        let button = document.getElementById('button')
+        let lista = document.getElementById('ul')
+        let selNumb = document.getElementById('selected-number')
+        var p = document.getElementById('p')
+        var resultados = document.getElementById('resultados')
+
+        selNumb.innerHTML = ""
+        // resultados.innerHTML=""
+
+        // configurando array de numeros 
+        config.addEventListener('click', function(){
+            numbers=[]
+            maxNum = prompt('Hasta que numero incluye el sorteo??')
+            for (let i = 1; i <= maxNum; i++){
+                numbers.push(i)
+            }
+            showNumbers(numbers)
+            p.innerHTML= "NUMEROS DISPONIBLES"
+        })
+
+        function showNumbers(array){
+            lista.innerHTML = ""
+            numbers.map(element => {
+                lista.innerHTML += `<li>${element}</li>`
+            })
+        }
+
+        button.addEventListener('click', function(){
+            count = count + 1
+            if(numbers.length>0){
+            let selectedPosition = Math.floor(Math.random()*(numbers.length))
+            
+            selNumb.innerHTML = numbers[selectedPosition]
+            resultados.innerHTML+=`${count}° numero: ${numbers[selectedPosition]} <br>`
+
+            numbers.splice((selectedPosition),1)
+            showNumbers(numbers[selectedPosition])
+            } else{
+                selNumb.innerHTML = "SORTEO FINALIZADO"
+                numbers = []
+                showNumbers(numbers)
+            }
+            
+
+        })
+
+</script>
+
+
+</body>
+
+</html>
