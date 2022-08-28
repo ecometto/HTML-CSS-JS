@@ -7,52 +7,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        *{
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
+        body {
+            background: url('img/sorteo.webp');
+            background-position: center;
+            background-size: cover;
+            color: white;
+        }
+
         .container {
-            width: 80%;
-            height: 100vh;
-            background-color: blueviolet;
+            width: 75%;
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
             margin: auto;
             position: relative;
-            text-align: center;            
+            text-align: center;
         }
-        .config{
+
+        .config {
             position: absolute;
             top: 10px;
             right: 10px;
-            background-color: aliceblue;
-            width: 50px;
-            height: 50px;
+            /* background-color: aliceblue; */
+            width: 3rem;
+            height: 3rem;
             border-radius: 50%;
             display: flex;
             align-items: center;
             cursor: pointer;
+            z-index: 1;
         }
-        .config img{
+
+        .config img {
             width: 100%;
             border-radius: 50%;
         }
-        .sub-container  {
+
+        h1 {
+            padding: 5px;
+            margin: 5px;
+        }
+
+        .sub-container {
             min-width: 60%;
             min-height: 70%;
-            background-color: orange;
+            background-color: rgba(50, 50, 50, 0.8);
             margin: 0px;
             padding: 20px;
             text-align: center;
             display: flex;
             justify-content: center;
             flex-direction: column;
+            border-radius: 20px;
         }
-        .numbers-container{
-            background-color: aqua;
+
+        .numbers-container {
+            /* background-color: aqua; */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -61,17 +79,20 @@
             font-weight: 600;
             padding: 20px;
         }
-        .numbers-container p{
+
+        .numbers-container p {
             margin: 0;
             padding: 0;
         }
+
         .ul {
             display: flex;
             justify-content: center;
             align-items: center;
             flex-wrap: wrap;
         }
-        .ul li{
+
+        .ul li {
             width: 50px;
             height: 50px;
             list-style: none;
@@ -83,7 +104,8 @@
             align-items: center;
             margin-bottom: 5px;
         }
-        .selected-number{
+
+        .selected-number {
             background-color: green;
             color: white;
             font-size: 40px;
@@ -93,21 +115,30 @@
             margin-top: 10px;
             margin-bottom: 10px;
         }
-        #button{
+
+        #button {
             padding: 10px;
             margin: 20px;
             border-radius: 5px;
             cursor: pointer;
             font-weight: 600;
         }
+
+        @media (max-width: 600px) {
+            .container {
+            width: 95%;
+        }
+        
+        }
     </style>
 </head>
 
 <body>
 
+    <p id="config" class="config"><img src="img/config.png" alt=""></p>
+
     <div class="container">
         <h1>SISTEMA DE SORTEO DE NUMEROS</h1>
-        <p id="config" class="config"><img src="img/config.png" alt=""></p>
         <div class="sub-container">
             <div class="numbers-container">
                 <p id="p">Seleccione "configurar" para iniciar el sorteo</p>
@@ -120,7 +151,7 @@
             </div>
             <!-- ---------------- -->
             <div>
-                <button type="submit" id="button">Sortear</button>
+                <button type="submit" id="button">Nuevo Sorteo</button>
             </div>
             <!-- ---------------- -->
             <div id="resultados">
@@ -132,7 +163,7 @@
 
     <script>
         // definición de variables 
-        var numbers=[0]
+        var numbers = [0]
         var maxNum = 0
         var count = 0
         let config = document.getElementById('config')
@@ -146,43 +177,43 @@
         // resultados.innerHTML=""
 
         // configurando array de numeros 
-        config.addEventListener('click', function(){
-            numbers=[]
+        config.addEventListener('click', function () {
+            numbers = []
             maxNum = prompt('Hasta que numero incluye el sorteo??')
-            for (let i = 1; i <= maxNum; i++){
+            for (let i = 1; i <= maxNum; i++) {
                 numbers.push(i)
             }
             showNumbers(numbers)
-            p.innerHTML= "NUMEROS DISPONIBLES"
+            p.innerHTML = "NUMEROS DISPONIBLES"
         })
 
-        function showNumbers(array){
+        function showNumbers(array) {
             lista.innerHTML = ""
             numbers.map(element => {
                 lista.innerHTML += `<li>${element}</li>`
             })
         }
 
-        button.addEventListener('click', function(){
+        button.addEventListener('click', function () {
             count = count + 1
-            if(numbers.length>0){
-            let selectedPosition = Math.floor(Math.random()*(numbers.length))
-            
-            selNumb.innerHTML = numbers[selectedPosition]
-            resultados.innerHTML+=`${count}° numero: ${numbers[selectedPosition]} <br>`
+            if (numbers.length > 0) {
+                let selectedPosition = Math.floor(Math.random() * (numbers.length))
 
-            numbers.splice((selectedPosition),1)
-            showNumbers(numbers[selectedPosition])
-            } else{
+                selNumb.innerHTML = numbers[selectedPosition]
+                resultados.innerHTML += `${count}° numero: ${numbers[selectedPosition]} <br>`
+
+                numbers.splice((selectedPosition), 1)
+                showNumbers(numbers[selectedPosition])
+            } else {
                 selNumb.innerHTML = "SORTEO FINALIZADO"
                 numbers = []
                 showNumbers(numbers)
             }
-            
+
 
         })
 
-</script>
+    </script>
 
 
 </body>
