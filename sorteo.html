@@ -190,13 +190,16 @@
         function showNumbers(array) {
             lista.innerHTML = ""
             numbers.map(element => {
-                lista.innerHTML += `<li>${element}</li>`
+                let item = document.createElement('li')
+                item.innerHTML = element
+                lista.appendChild(item)
+
             })
         }
 
         button.addEventListener('click', function () {
             count = count + 1
-            if (numbers.length > 0) {
+            if (numbers.length >=1) {
                 let selectedPosition = Math.floor(Math.random() * (numbers.length))
 
                 selNumb.innerHTML = numbers[selectedPosition]
@@ -204,11 +207,13 @@
 
                 numbers.splice((selectedPosition), 1)
                 showNumbers(numbers[selectedPosition])
-            } else {
-                selNumb.innerHTML = "SORTEO FINALIZADO"
-                numbers = []
-                showNumbers(numbers)
-            }
+
+                if(numbers.length <= 0){
+                    selNumb.innerHTML = "SORTEO FINALIZADO"
+                    numbers = []
+                    showNumbers(numbers)
+                }
+            } 
 
 
         })

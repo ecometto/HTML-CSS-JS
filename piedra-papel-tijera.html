@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piedra Papel y Tijera</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            background: url('img/piedra-papel-tijera.jpg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            /* background-color: aqua; */
+            min-height: 600px;
+            position: relative;
+            padding: 30px;
+            text-align: center;
+            color: aliceblue;
+        }
+        .maquina, .humano{
+            height: 300px;
+            background-color: rgba(20,20,20,0.3);
+            position: relative;
+            overflow: hidden;
+            padding: 10px;
+        }
+
+        .resultado{
+            /* background-color: aliceblue; */
+            height: 140px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: red;
+            font-size: 40px;
+            font-weight: 600;
+        }
+
+        /* .eleccion{
+            height: 100%;
+        } */
+        
+        .eleccion img{
+            max-width: 30%;
+            max-height: 200px;
+        }
+
+        .eh{
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .border{
+            border: solid 2px blue;
+        }
+        .noBorder{
+            border: none
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+   
+            <div class="maquina">
+                <h3>MAQUINA</h3>
+        
+                <p id="me">??</p>
+                <div class="eleccion">
+                    <img id="mImg" src="img/papel.png" alt="">
+                </div>
+            </div>
+            <div class="resultado">
+                ELIJA UNA OPCION
+            </div>
+            <div class="humano">
+                <H3>HUMANO</H3>
+    
+                <p id="he">??</p>
+                <div class="eleccion eh">
+                    <img data-name="piedra" src="img/piedra.png" alt="">
+                    <img data-name="papel" src="img/papel.png" alt="">
+                    <img data-name="tijera" src="img/tijera.png" alt="">
+                </div>
+            </div>
+    </div>
+
+    <script>
+        var posibilidades =['piedra', 'papel','tijera']
+        var humanChoise = ""
+        var machineChoise = ""
+        const me = document.getElementById('me')
+        const he = document.getElementById('he')
+        const res = document.querySelector('.resultado')
+        const mImg = document.getElementById('mImg')
+
+
+
+
+        // SETEANDO CLICK DE HUMANO
+        humanImg = document.querySelectorAll('.humano img')
+        humanImg.forEach(img => {
+                
+               img.addEventListener('click',(e)=>{
+                humanChoise =  img.dataset.name
+                he.innerHTML = `<h2>"${humanChoise.toUpperCase()}"</h2>`
+
+                
+                e.target.classList.add('border')
+                console.log(e);
+
+                machineChoise = playMachine();
+                me.innerHTML = `<h2>"${machineChoise.toUpperCase()}"</h2>`
+
+                resultado(machineChoise, humanChoise)
+               })
+        });
+
+        function playMachine(){
+            let eleccion = Math.floor(Math.random()*3)
+            mImg.setAttribute('src', "img/"+ posibilidades[eleccion] +".png" )
+            return posibilidades[eleccion];
+        }
+
+        function resultado(m, h){
+
+            console.log('intentando');
+
+            if(m==="piedra"){
+                if (h==="piedra"){res.innerHTML = "Humano: " + h + "<br>  Maquina: " + m + " <br>EMPATE"; return}
+                if (h==="papel"){res.innerHTML = "Humano: " + h + "<br>  Maquina: " + m + " <br>HUMAN WINS"; return}
+                if (h==="tijera"){res.innerHTML = "Humano: " + h + "<br>  Maquina: " + m + " <br>MACHINE WINS"; return}
+                
+            } else if(m==="papel"){
+                if (h==="piedra"){res.innerHTML = "Humano: " + h + "<br>  Maquina: " + m + " <br>MACHINE WINS"; return}
+                if (h==="papel"){res.innerHTML = "Humano: " + h + "<br>  Maquina: " + m + " <br>EMPATE"; return}
+                if (h==="tijera"){res.innerHTML = "Humano: " + h + "<br>  Maquina: " + m + " <br>HUMAN WINS"; return}
+                
+            } else if(m==="tijera"){
+                if (h==="piedra"){res.innerHTML = "Humano: " + h + "<br>  Maquina: " + m + " <br>HUMAN WINS"; return}
+                if (h==="papel"){res.innerHTML = "Humano: " + h + "<br>  Maquina: " + m + " <br>MACHINE WINS"; return}
+                if (h==="tijera"){res.innerHTML = "Humano: " + h + "<br>  Maquina: " + m + " <br>EMPATE"; return}
+                
+            }
+
+            { res.innerHTML = "MACHINE WINS"}
+        }
+
+    </script>
+</body>
+
+
+
+</html>
