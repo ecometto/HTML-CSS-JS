@@ -13,25 +13,34 @@ var marker = L.marker([51.5, -0.09]).addTo(map);
 //  ----------------------------------------------------------------------------- 
 window.addEventListener('load', () => {
     // VARIABLES -------------------------------
-    var allData = []
     var tbody = document.getElementById('tbody')
-    var random = document.getElementById('random')
-    var prueba = document.getElementById('prueba')
-    var selectMovil = document.getElementById('selectMovil')
-    var fecha = document.getElementById('fecha')
+    const random = document.getElementById('random')
+    const prueba = document.getElementById('prueba')
+    const selectMovil = document.getElementById('selectMovil')
+    const fecha = document.getElementById('fecha')
+    const all = document.getElementById('all')
 
 
 
     // ADDEVENTLISTENER -------------------------
     random.addEventListener('click', () => getRandom())
-    prueba.addEventListener('click', ()=> getFilteredData())
+    selectMovil.addEventListener('change', () => getFilteredData())
+    fecha.addEventListener('change', () => getFilteredData())
+    all.addEventListener('click', () => {
+        selectMovil.value = ""
+        fecha.value = "";
 
-    
+        allData = getData()
+        showData(allData)
+    })
+
+
+
     // LOADING DATA IN PAGE 
     allData = getData()
     showData(allData)
-    
-    
+
+
     // FUNCIONES: -------------------------------
     //GETTING DATA FROM LOCALSTORAGE
     function getData() {
@@ -68,19 +77,31 @@ window.addEventListener('load', () => {
     }
 
     // FILTER DATA
-    function getFilteredData(){
-        datos=getData()
-        let v=selectMovil.value    
-        let f = fecha.value
+    function getFilteredData() {
+        datos = getData()
+        var ve = selectMovil.value
+        var fe = fecha.value
+        var filtered2 = []
 
-        let filtered = datos.filter(element=> element.vehiculo == v)
-        console.log("filtrado" ,filtered);
+        // console.log("fecha", fe);
+        // console.log("vehiculo", ve);
 
-        let filtered2 = filtered.filter(element => (element.fecha).substring(0,10) == f)
-        console.log("filtrado2" ,filtered2);
-        
+        if (fe !== "" && ve !== "") {
+            filtered2 = datos.filter(element => {
+                return element.vehiculo == ve && (element.fecha).substring(0, 10) == fe
+            })
+        }
+        else if (ve !== "") {
+            filtered2 = datos.filter(element =>  element.vehiculo == ve)
+            console.log(filtered2);
+        }
+        else{
+            filtered2 = datos.filter(element =>  (element.fecha).substring(0, 10) == fe)
+            console.log(filtered2);
+        }
+
         showData(filtered2)
-
+        all.checked = false
     }
 
     // GENERAR DATOS ALEATORIOS  
