@@ -1,0 +1,92 @@
+html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+
+.navbar-collapse {}
+
+header ul {
+    display: flex;
+}
+
+header ul li {
+    list-style: none;
+    margin: 0px 10px;
+    background-color: gray;
+    text-align: center;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: solid 1px whitesmoke;
+    transform: scale(1);
+    transition: all 0.3s;
+}
+
+header ul li:hover {
+    background-color: silver;
+    transform: scale(1.05);
+
+}
+
+header ul li:hover a {
+    color: black
+}
+
+header ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+main {
+    margin: 100px 0px;
+
+}
+
+section{
+padding: 20px;
+padding-bottom: 0px;
+}
+.subtitle {
+    margin-bottom: 20px;
+}
+
+.title {
+    padding: 40px 0px 0px 0px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+h5 {
+    text-transform: capitalize;
+    text-decoration: underline;
+}
+
+
+.product {
+    background-image:  linear-gradient(rgba(255,0,174,0.5), rgba(220,20,100,0.5)), url('../img/adoquines.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.ola{
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+.product img{
+    width:100px;
+    height: auto;
+
+}
+
+
+.product-container{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}

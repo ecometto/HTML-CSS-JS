@@ -10,6 +10,8 @@
     <!-- LEAFLET  -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
         integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
+    <!-- datatables  -->
+    <link rel="stylesheet" href="//cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/styles.css">
     <title>Document</title>
@@ -20,8 +22,8 @@
     <main class="container">
         <section class="map-container">
 
-            <button id="random">Random Generate</button>
-            
+            <button class="btn btn-primary" id="random">Random Generate</button>
+
             <div id="map">
             </div>
 
@@ -31,13 +33,15 @@
             <!-- <h2>prueba <button id="prueba">prueba</button></h2> -->
             <div class="row mb-3">
                 <div class="col-md-4">
-                    limpiar mapa <button class="btn btn-warning" id="clear" style="border-radius: 5px; color: white">Limpiar</button>
+                    limpiar mapa <button class="btn btn-warning" id="clear"
+                        style="border-radius: 5px; color: white">Limpiar</button>
                 </div>
                 <div class="col-md-4 ">
-                    mostrar iconos <button class="btn btn-success" id="show" style="border-radius: 5px; color: white">Show</button>
+                    mostrar iconos <button class="btn btn-success" id="show"
+                        style="border-radius: 5px; color: white">Show</button>
                 </div>
                 <div class=" col-md-3 selector-botones mb-3">
-                Choose buttons color: <input type="color" class="" id="colorPrimario" value="#001122">
+                    <!-- Choose buttons color: <input type="color" class="" id="colorPrimario" value="#001122"> -->
                 </div>
             </div>
 
@@ -55,13 +59,16 @@
                     Filtrar fecha: <input type="date" class="form-control" id="fecha">
                 </div>
                 <div class="col-md-4">
-                    <label for="all">Mostrar todo: </label> 
-                    <input type="checkbox" name="" id="all" value ="1" checked>
+                    <label for="all">Mostrar todo: </label> <br>
+                    <button id="all" class="btn btn-success">mostrar todo</button>
                 </div>
             </div>
 
-            <h3 class="text-center">LISTADO DE MOVIMIENTOS</h3>
-            <table class="table table-light">
+            <div class="titulo-tabla">
+                <h3 class="text-center">LISTADO DE MOVIMIENTOS</h3>
+                <button class="btn btn-danger" id="deleteAll">Borrar todos los registros</button>
+            </div>
+            <table class="table table-light" id="myTable">
                 <thead class="thead-light">
                     <tr>
                         <th>id</th>
@@ -89,12 +96,14 @@
     <!-- JQUERY  -->
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"
         integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+    <!-- datatables JS  -->
+    <script src="//cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
+
+    <script src="js/app.js"></script>
 
     <script>
 
     </script>
-
-    <script src="js/app.js"></script>
 
 </body>
 

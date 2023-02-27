@@ -7,38 +7,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Piedra Papel y Tijera</title>
     <style>
-        *{
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        body{
+
+        body {
             background: url('img/piedra-papel-tijera.jpg');
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
         }
+
         .container {
             width: 80%;
             margin: auto;
-            /* background-color: aqua; */
             min-height: 600px;
             position: relative;
-            padding: 30px;
+            padding: 0px 30px;
             text-align: center;
             color: aliceblue;
         }
-        .maquina, .humano{
+
+        .maquina,
+        .humano {
             height: 300px;
-            background-color: rgba(20,20,20,0.3);
+            background-color: rgba(20, 20, 20, 0.3);
             position: relative;
             overflow: hidden;
             padding: 10px;
         }
 
-        .resultado{
-            /* background-color: aliceblue; */
-            height: 140px;
+        .resultado {
+            height: 100px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -47,16 +49,12 @@
             font-weight: 600;
         }
 
-        /* .eleccion{
-            height: 100%;
-        } */
-        
-        .eleccion img{
+        .eleccion img {
             max-width: 30%;
             max-height: 200px;
         }
 
-        .eh{
+        .eh {
             display: flex;
             flex-wrap: nowrap;
             justify-content: center;
@@ -64,102 +62,122 @@
             gap: 5px;
         }
 
-        .border{
-            border: solid 2px blue;
+        .border {
+            border: solid 5px blue;
         }
-        .noBorder{
-            border: none
-        }
-
-
     </style>
 </head>
 
 <body>
     <div class="container">
-   
-            <div class="maquina">
-                <h3>MAQUINA</h3>
-        
-                <p id="me">??</p>
-                <div class="eleccion">
-                    <img id="mImg" src="img/papel.png" alt="">
-                </div>
+
+        <div class="maquina">
+            <h3>MAQUINA</h3>
+
+            <p id="me">??</p>
+            <div class="eleccion">
+                <img id="mImg" src="img/papel.png" alt="">
             </div>
-            <div class="resultado">
-                ELIJA UNA OPCION
+        </div>
+        <div class="resultado">
+            ELIJA UNA OPCION
+        </div>
+        <div class="humano">
+            <H3>HUMANO</H3>
+
+            <p id="he">??</p>
+            <div class="eleccion eh">
+                <img data-name="piedra" src="img/piedra.png" alt="">
+                <img data-name="papel" src="img/papel.png" alt="">
+                <img data-name="tijera" src="img/tijera.png" alt="">
             </div>
-            <div class="humano">
-                <H3>HUMANO</H3>
-    
-                <p id="he">??</p>
-                <div class="eleccion eh">
-                    <img data-name="piedra" src="img/piedra.png" alt="">
-                    <img data-name="papel" src="img/papel.png" alt="">
-                    <img data-name="tijera" src="img/tijera.png" alt="">
-                </div>
-            </div>
+        </div>
     </div>
 
     <script>
-        var posibilidades =['piedra', 'papel','tijera']
+        var posibilidades = ['piedra', 'papel', 'tijera']
         var humanChoise = ""
         var machineChoise = ""
         const me = document.getElementById('me')
         const he = document.getElementById('he')
         const res = document.querySelector('.resultado')
         const mImg = document.getElementById('mImg')
-
+        var humanPoints = 0
+        var MachinePoints = 0
 
 
 
         // SETEANDO CLICK DE HUMANO
         humanImg = document.querySelectorAll('.humano img')
         humanImg.forEach(img => {
-                
-               img.addEventListener('click',(e)=>{
-                humanChoise =  img.dataset.name
-                he.innerHTML = `<h2>"${humanChoise.toUpperCase()}"</h2>`
+            img.addEventListener('click', (e) => {
 
-                
+                //   le quito la clase "seleccionado" a todos 
+                humanImg.forEach(img1 => {
+                    img1.classList.remove('border')
+                })
+
+                humanChoise = img.dataset.name
+                he.innerHTML = `<h2>"${humanChoise.toUpperCase()}"</h2>`
                 e.target.classList.add('border')
-                console.log(e);
 
                 machineChoise = playMachine();
                 me.innerHTML = `<h2>"${machineChoise.toUpperCase()}"</h2>`
 
                 resultado(machineChoise, humanChoise)
-               })
+            })
         });
 
-        function playMachine(){
-            let eleccion = Math.floor(Math.random()*3)
-            mImg.setAttribute('src', "img/"+ posibilidades[eleccion] +".png" )
+        function playMachine() {
+            let eleccion = Math.floor(Math.random() * 3)
+            mImg.setAttribute('src', "img/" + posibilidades[eleccion] + ".png")
             return posibilidades[eleccion];
         }
 
-        function resultado(m, h){
+        function resultado(m, h) {
 
-            console.log('intentando');
+            if (m === "piedra") {
+                if (h === "piedra") { res.innerHTML = "EMPATE" }
+                if (h === "papel") { res.innerHTML = "HUMAN WINS"; humanPoints += 1 }
+                if (h === "tijera") { res.innerHTML = "MACHINE WINS"; MachinePoints += 1 }
 
-            if(m==="piedra"){
-                if (h==="piedra"){res.innerHTML = "Humano: " + h + "<br>  Maquina: " + m + " <br>EMPATE"; return}
-                if (h==="papel"){res.innerHTML = "Humano: " + h + "<br>  Maquina: " + m + " <br>HUMAN WINS"; return}
-                if (h==="tijera"){res.innerHTML = "Humano: " + h + "<br>  Maquina: " + m + " <br>MACHINE WINS"; return}
-                
-            } else if(m==="papel"){
-                if (h==="piedra"){res.innerHTML = "Humano: " + h + "<br>  Maquina: " + m + " <br>MACHINE WINS"; return}
-                if (h==="papel"){res.innerHTML = "Humano: " + h + "<br>  Maquina: " + m + " <br>EMPATE"; return}
-                if (h==="tijera"){res.innerHTML = "Humano: " + h + "<br>  Maquina: " + m + " <br>HUMAN WINS"; return}
-                
-            } else if(m==="tijera"){
-                if (h==="piedra"){res.innerHTML = "Humano: " + h + "<br>  Maquina: " + m + " <br>HUMAN WINS"; return}
-                if (h==="papel"){res.innerHTML = "Humano: " + h + "<br>  Maquina: " + m + " <br>MACHINE WINS"; return}
-                if (h==="tijera"){res.innerHTML = "Humano: " + h + "<br>  Maquina: " + m + " <br>EMPATE"; return}
-                
+            } else if (m === "papel") {
+                if (h === "piedra") { res.innerHTML = "MACHINE WINS"; MachinePoints += 1; }
+                if (h === "papel") { res.innerHTML = "EMPATE" }
+                if (h === "tijera") { res.innerHTML = "HUMAN WINS"; humanPoints += 1 }
+
+            } else if (m === "tijera") {
+                if (h === "piedra") { res.innerHTML = "HUMAN WINS"; humanPoints += 1 }
+                if (h === "papel") { res.innerHTML = "MACHINE WINS"; MachinePoints += 1 }
+                if (h === "tijera") { res.innerHTML = "EMPATE" }
             }
 
-            { res.innerHTML = "MACHINE WINS"}
+            console.log('humano', humanPoints);
+            console.log('maquina', MachinePoints);
+            if (humanPoints >= 3) {
+                res.innerHTML = "EL HUMANO ES EL GANADOR !!!!"
+                humanPoints = 0
+                MachinePoints = 0
+                let continua = confirm('EL HUMANO ES EL GANADOR !!!!. Continua??');
+                if (!continua) {
+                    let confirmation = confirm('Está a punto de cerrar la pagina. OK?')
+                    if (confirmation) {
+                        window.close();
+                    }
+                }
+            } else if (MachinePoints >= 3) {
+                res.innerHTML = "LA MAQUINA GANA !!!!"
+                humanPoints = 0
+                MachinePoints = 0
+                let continua = confirm('EL HUMANO ES EL GANADOR !!!!. Continua??');
+                if (!continua) {
+                    let confirmation = confirm('Está a punto de cerrar la pagina. OK?')
+                    if (confirmation) {
+                        window.close();
+                    }
+                }
+            }
+
         }
 
     </script>

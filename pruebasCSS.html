@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .container{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: gray;
+            width: 100vw;
+            height: 100vh;
+        }
+        .spinner-container{
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 200px;
+            height: 200px;
+        } 
+        .spinner {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border: solid 10px rgba(200,200,200,0.3);
+            border-radius: 50%;
+            animation: girar 1s infinite;
+        }
+        .spinner::before{
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 10px;
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background-color: yellow;
+        }
+
+
+        .text1 {
+        animation: titilar1 1s infinite;
+        }
+        .text2 {
+        animation: titilar2 1s infinite;
+        }
+        .text3 {
+        animation: titilar3 1s infinite;
+        }
+
+        @keyframes titilar1{
+            0%{opacity: 0;}
+            25%{opacity: 1;}
+        }
+        @keyframes titilar2{
+            0%{opacity: 0;}
+            25%{opacity: 0;}
+            50%{opacity: 1;}
+        }
+        @keyframes titilar3{
+            0%{opacity: 0;}
+            50%{opacity: 0;}
+            75%{opacity: 1;}
+        }
+
+        @keyframes girar {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+        <div class="spinner-container">
+            <p class="text">Cargando
+                <span class="text1">.</span>
+                <span class="text2">.</span>
+                <span class="text3">.</span>
+            </p>
+            <div class="spinner"></div>
+        </div>
+</div>
+</body>
+
+</html>

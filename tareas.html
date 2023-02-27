@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tareas</title>
+</head>
+
+<body>
+    <!-- formulario  -->
+    <h3>Nueva tarea</h3>
+    <form action="" id="formulario">
+        nombre: <input type="tarea" id="tarea">
+        descripcion: <input type="text" id="descripcion">
+        <br>
+        <button id="agregar" >agragar</button>
+    </form>
+
+    <!-- lista de tareas  -->
+    <h3>lista de tareas</h3>
+    <ul id="listaTareas"> </ul>
+
+
+
+    <script>
+        data=obtenerDatos()[0]
+        listarTareas(data)
+
+        form = document.getElementById('formulario')
+        form.addEventListener('submit', (e) => {
+            e.preventDefault()
+            data=obtenerDatos()[0]
+            id= obtenerDatos()[1]+1
+            nom = document.getElementById('tarea')
+            desc = document.getElementById('descripcion')
+            data.push({ id:id, nombre: nom.value, descripcion: desc.value })
+
+            cargarLocalStorage(data)
+            data = obtenerDatos()[0]
+
+            listarTareas(data)
+
+            nom.value=""
+            desc.value=""
+            nom.focus()
+        })
+
+        function cargarLocalStorage(data){
+            let stringify = JSON.stringify(data)
+            localStorage.setItem('misdatos', stringify)
+    }
+
+        function obtenerDatos(){
+            let datos = localStorage.getItem('misdatos')
+            if (datos == null) {
+                data = []
+                ultimoId = 0
+            }else {
+                data = JSON.parse(datos);
+                ultimoId=0
+                for (cada of data){
+                    if (cada.id > ultimoId){
+                        ultimoId= cada.id
+                    }
+                }
+
+            }
+            return [data, ultimoId]
+        }
+
+        function listarTareas(datosActuales){
+            listaTareas.innerHTML=""
+            for (cada of datosActuales){
+                listaTareas.innerHTML+=`<li>${cada.nombre} - ${cada.descripcion} - <button id=${cada.id} onclick="eliminar(${cada.id} )">x</button></li>`
+            }
+        }
+
+        function eliminar(id){
+            data=obtenerDatos()[0]
+            data=data.filter((item) => item.id !== id)
+            console.log(data);
+            cargarLocalStorage(data)
+            let datosActuales = obtenerDatos()[0]
+            listarTareas(datosActuales)
+        }
+
+    </script>
+
+</body>
+
+</html>

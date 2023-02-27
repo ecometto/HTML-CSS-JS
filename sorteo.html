@@ -147,7 +147,7 @@
             </div>
             <!-- --------------  -->
             <div id="selected-number" class="selected-number">
-                "X"
+                
             </div>
             <!-- ---------------- -->
             <div>
@@ -173,11 +173,11 @@
         var p = document.getElementById('p')
         var resultados = document.getElementById('resultados')
 
-        selNumb.innerHTML = ""
-        // resultados.innerHTML=""
+        selNumb.innerHTML = "X"
 
         // configurando array de numeros 
         config.addEventListener('click', function () {
+            resultados.innerHTML = ""
             numbers = []
             maxNum = prompt('Hasta que numero incluye el sorteo??')
             for (let i = 1; i <= maxNum; i++) {
@@ -187,6 +187,7 @@
             p.innerHTML = "NUMEROS DISPONIBLES"
         })
 
+        // renderizando los numeros 
         function showNumbers(array) {
             lista.innerHTML = ""
             numbers.map(element => {
@@ -197,6 +198,7 @@
             })
         }
 
+        // configurando boton "sorteo" 
         button.addEventListener('click', function () {
             count = count + 1
             if (numbers.length >=1) {
