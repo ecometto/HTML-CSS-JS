@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="">
+    <title>Document</title>
+    <style>
+        /* .container {
+            height: 600px;
+            width: 600px;
+            border: solid 1px black;
+            background-color: pink;
+            position: relative;
+        }
+
+        div>div {
+            height: 200px;
+            width: 200px;
+            border: solid 1px black;
+            background-color: blueviolet;
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            font-weight: 700;
+        }
+
+        .div1 {
+            top: 0px;
+            left: 0px;
+        }
+
+        .div2 {
+            top: 0px;
+            right: 0px;
+        }
+
+        .div3 {
+            bottom: 0px;
+            left: 0px;
+        }
+
+        .div4 {
+            bottom: 0px;
+            right: 0px;
+        }
+
+        .div5 {
+            top: 0px;
+            left: 0px;
+            bottom: 0px;
+            right: 0px;
+            margin: auto;
+        } */
+
+        #btns {
+            width: 75%;
+        }
+
+        #btns>button {
+            width: 30%;
+            height: 48px;
+            font-size: 20px;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <div class="container">
+        <div class="div1">1</div>
+        <div class="div2">2</div>
+        <div class="div3">3</div>
+        <div class="div4">4</div>
+        <div class="div5">5</div>
+    </div> -->
+
+    <div id="btns">
+        <button class="rotable" id="btn1">1</button>
+        <button class="rotable" id="btn2">2</button>
+        <button class="rotable" id="btn3">3</button>
+        <button class="rotable" id="btn4">4</button>
+        <button class="" id="btn5">5</button>
+        <button class="rotable" id="btn6">6</button>
+        <button class="rotable" id="btn7">7</button>
+        <button class="rotable" id="btn8">8</button>
+        <button class="rotable" id="btn9">9</button>
+    </div>
+
+    <script>
+        var caja = 0
+        var botones = document.querySelectorAll('.rotable')
+        var btn5 = document.getElementById('btn5')
+        var cajas = ['btn1', 'btn2', 'btn3', 'btn6', 'btn9', 'btn8', 'btn7', 'btn4']
+        var valuesInner = [1, 2, 3, 6, 9, 8, 7, 4]
+        var i = -1
+        btn5.addEventListener('click', () => {
+            girar()
+        })
+
+        girar()
+
+        function girar(){
+            cajas.forEach((val, index) => {
+                console.log(i);
+                if (i >= 7) {
+                    i = 0
+                } else {
+                    i++
+                }
+                document.getElementById(val).innerHTML = valuesInner[i]
+            })
+            i--
+        }
+
+
+    </script>
+</body>
+
+</html>
