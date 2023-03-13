@@ -65,11 +65,17 @@ h5 {
 
 
 .product {
-    background-image:  linear-gradient(rgba(255,0,174,0.5), rgba(220,20,100,0.5)), url('../img/adoquines.jpg');
+    background-image:  linear-gradient(rgba(222,222,222,0.5), rgba(220,20,100,0.5)), url('../img/adoquines.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
+    width:80%;
+    margin: 0 auto;
+    display: flex;
+    padding: 20px;
+    align-items: center;
+    
 }
 
 .ola{
@@ -79,9 +85,9 @@ h5 {
 }
 
 .product img{
-    width:100px;
+    width:200px;
     height: auto;
-
+    padding-right: 20px;
 }
 
 
